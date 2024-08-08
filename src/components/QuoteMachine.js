@@ -11,8 +11,7 @@ const QuoteMachine = () => {
 
   const fetchQuote = async () => {
     try {
-      const response = await axios.get(
-        'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json');
+      const response = await axios.get('https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json');
       const quotesData = response.data;
       const randomQuote = quotesData.quotes[Math.floor(Math.random() * quotesData.quotes.length)];
 
@@ -20,6 +19,7 @@ const QuoteMachine = () => {
       setAuthor(randomQuote.author);
       setCopied(false);
     } catch (error) {
+      // Consider using a logging library or removing this in production
       console.error('Error fetching quotes:', error);
     }
   };
@@ -39,8 +39,9 @@ const QuoteMachine = () => {
       setRandomBackgroundImage();
     }, 5000);
 
+    // Including setRandomBackgroundImage in the dependency array
     return () => clearInterval(intervalId);
-  }, []);
+  }, [setRandomBackgroundImage]);
 
   const copyQuoteToClipboard = () => {
     const textToCopy = `'${quote}' — ${author}`;
@@ -51,6 +52,7 @@ const QuoteMachine = () => {
         setTimeout(() => setCopied(false), 2000);
       })
       .catch((err) => {
+        // Consider using a logging library or removing this in production
         console.error('Failed to copy quote:', err);
       });
   };
@@ -63,19 +65,19 @@ const QuoteMachine = () => {
       <h1>Quote Machine</h1>
       <div className="quote-box">
         <div className="quote-text">
-          <p id='text'>{quote}</p>
+          <p id="text">{quote}</p>
         </div>
         <div className="quote-author">
           <p>
             -
-            <span id='author'>{author}</span>
+            <span id="author">{author}</span>
           </p>
         </div>
         <div className="button-container">
           <button
             type='button'
             className="button"
-            id='new-quote'
+            id="new-quote"
             onClick={fetchQuote}
           >
             New quote
@@ -83,7 +85,7 @@ const QuoteMachine = () => {
           <button
             className="button"
             type='button'
-            id='copy-quote'
+            id="copy-quote"
             onClick={copyQuoteToClipboard}
           >
             {copied ? <FaCheck className="check-icon" /> : 'Copy Quote'}
