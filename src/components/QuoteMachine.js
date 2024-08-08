@@ -12,11 +12,9 @@ const QuoteMachine = () => {
   const fetchQuote = async () => {
     try {
       const response = await axios.get(
-        'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json'
-      );
+        'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json');
       const quotesData = response.data;
-      const randomQuote =
-        quotesData.quotes[Math.floor(Math.random() * quotesData.quotes.length)];
+      const randomQuote = quotesData.quotes[Math.floor(Math.random() * quotesData.quotes.length)];
 
       setQuote(randomQuote.quote);
       setAuthor(randomQuote.author);
@@ -26,12 +24,12 @@ const QuoteMachine = () => {
     }
   };
 
+  const images = ['bg1.jpg', 'bg2.jpg', 'bg3.jpg', 'bg4.jpg', 'bg5.jpeg', 'bg6.jpg', 'bg7.png'];
+
   const setRandomBackgroundImage = () => {
     const randomImage = images[Math.floor(Math.random() * images.length)];
     setBgImage(`/images/${randomImage}`);
   };
-
-  const images = ['bg1.jpg', 'bg2.jpg', 'bg3.jpg', 'bg4.jpg', 'bg5.jpeg', 'bg6.jpg', 'bg7.png'];
 
   useEffect(() => {
     fetchQuote();
@@ -59,35 +57,36 @@ const QuoteMachine = () => {
 
   return (
     <div
-      className='quote-machine'
+      className="quote-machine"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
       <h1>Quote Machine</h1>
-      <div className='quote-box'>
-        <div className='quote-text'>
+      <div className="quote-box">
+        <div className="quote-text">
           <p id='text'>{quote}</p>
         </div>
-        <div className='quote-author'>
+        <div className="quote-author">
           <p>
-            -<span id='author'>{author}</span>
+            -
+            <span id='author'>{author}</span>
           </p>
         </div>
-        <div className='button-container'>
+        <div className="button-container">
           <button
             type='button'
-            className='button'
+            className="button"
             id='new-quote'
             onClick={fetchQuote}
           >
             New quote
           </button>
           <button
-            className='button'
+            className="button"
             type='button'
             id='copy-quote'
             onClick={copyQuoteToClipboard}
           >
-            {copied ? <FaCheck className='check-icon' /> : 'Copy Quote'}
+            {copied ? <FaCheck className="check-icon" /> : 'Copy Quote'}
           </button>
         </div>
       </div>
