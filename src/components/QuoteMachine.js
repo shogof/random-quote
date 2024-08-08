@@ -31,7 +31,7 @@ const QuoteMachine = () => {
     setBgImage(`/images/${randomImage}`);
   };
 
-  const images = ['bg1.jpg', 'bg2.jpg', 'bg3.jpg', 'bg4.jpg'];
+  const images = ['bg1.jpg', 'bg2.jpg', 'bg3.jpg', 'bg4.jpg', 'bg5.jpeg', 'bg6.jpg', 'bg7.png'];
 
   useEffect(() => {
     fetchQuote();
