@@ -23,6 +23,15 @@ body::before {
   z-index: -1;
 }
 
+h1 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 20px;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    border-radius: 10px;
+}
+
 /* Main Container */
 .quote-machine {
   display: flex;

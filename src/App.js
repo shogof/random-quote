@@ -1,5 +1,5 @@
 import React from 'react';
-// import QuoteMachine from './components/QuoteMachine';
+import QuoteMachine from './components/QuoteMachine';
 
 function App() {
   return (
