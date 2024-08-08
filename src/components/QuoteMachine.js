@@ -19,8 +19,7 @@ const QuoteMachine = () => {
       setAuthor(randomQuote.author);
       setCopied(false);
     } catch (error) {
-      // Consider using a logging library or removing this in production
-      console.error('Error fetching quotes:', error);
+      alert.error('Error fetching quotes:', error);
     }
   };
 
@@ -39,9 +38,8 @@ const QuoteMachine = () => {
       setRandomBackgroundImage();
     }, 5000);
 
-    // Including setRandomBackgroundImage in the dependency array
     return () => clearInterval(intervalId);
-  }, [setRandomBackgroundImage]);
+  }, []);
 
   const copyQuoteToClipboard = () => {
     const textToCopy = `'${quote}' — ${author}`;
@@ -52,8 +50,7 @@ const QuoteMachine = () => {
         setTimeout(() => setCopied(false), 2000);
       })
       .catch((err) => {
-        // Consider using a logging library or removing this in production
-        console.error('Failed to copy quote:', err);
+        alert.error('Failed to copy quote:', err);
       });
   };
 
@@ -75,7 +72,7 @@ const QuoteMachine = () => {
         </div>
         <div className="button-container">
           <button
-            type='button'
+            type="button"
             className="button"
             id="new-quote"
             onClick={fetchQuote}
@@ -84,7 +81,7 @@ const QuoteMachine = () => {
           </button>
           <button
             className="button"
-            type='button'
+            type="button"
             id="copy-quote"
             onClick={copyQuoteToClipboard}
           >
