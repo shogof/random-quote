@@ -3,7 +3,7 @@ import axios from 'axios';
 import { FaCheck } from 'react-icons/fa';
 import './QuoteMachine.css';
 
-const QuoteMachine = () => {
+function QuoteMachine() {
   const [quote, setQuote] = useState('');
   const [author, setAuthor] = useState('');
   const [bgImage, setBgImage] = useState('');
@@ -19,7 +19,7 @@ const QuoteMachine = () => {
       setAuthor(randomQuote.author);
       setCopied(false);
     } catch (error) {
-      alert.error('Error fetching quotes:', error);
+      alert('Error fetching quotes:', error);
     }
   };
 
@@ -50,7 +50,7 @@ const QuoteMachine = () => {
         setTimeout(() => setCopied(false), 2000);
       })
       .catch((err) => {
-        alert.error('Failed to copy quote:', err);
+        alert('Failed to copy quote:', err);
       });
   };
 
@@ -60,14 +60,15 @@ const QuoteMachine = () => {
       style={{ backgroundImage: `url(${bgImage})` }}
     >
       <h1>Quote Machine</h1>
-      <div className="quote-box">
+      <div className="quote-box" id="quote-box">
         <div className="quote-text">
           <p id="text">{quote}</p>
         </div>
         <div className="quote-author">
           <p>
-            -
-            <span id="author">{author}</span>
+            <span id="author">
+              {author}
+            </span>
           </p>
         </div>
         <div className="button-container">
@@ -87,10 +88,18 @@ const QuoteMachine = () => {
           >
             {copied ? <FaCheck className="check-icon" /> : 'Copy Quote'}
           </button>
+          <a
+            id="tweet-quote"
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(`"${quote}" — ${author}`)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Tweet Quote
+          </a>
         </div>
       </div>
     </div>
   );
-};
+}
 
 export default QuoteMachine;
