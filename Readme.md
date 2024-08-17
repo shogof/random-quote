@@ -5,7 +5,7 @@
 > ### 🎨 **Random Quote Machine** 🧠
 is a React-based application that generates random quotes from a public API. It features dynamic background images that change every 5 seconds, and includes functionality to copy quotes to the clipboard. The app is designed with an intuitive interface and smooth animations for an engaging user experience.
 
-## [Live Demo](https://shogof.github.io/random-quote/) 🎥
+## [Live Demo](https://random-quote-9wrr1iinq-shogofs-projects.vercel.app/) 🎥
 
 ## Demo 📸
 
