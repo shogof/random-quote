@@ -1,6 +1,6 @@
 import React from 'react';
 import QuoteMachine from './components/QuoteMachine';
-import './App.css'
+import './App.css';
 
 function App() {
   return (
